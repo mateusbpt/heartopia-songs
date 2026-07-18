@@ -1,9 +1,13 @@
 # Heartopia Songs
 
+[![CI](https://github.com/mateusbpt/heartopia-songs/actions/workflows/ci.yml/badge.svg)](https://github.com/mateusbpt/heartopia-songs/actions/workflows/ci.yml)
+
+**[▶ Abrir o app](https://heartopia-songs.netlify.app)**
+
 Converte a notação de letras do [noobnotes.net](https://noobnotes.net) na sequência de teclas do
 piano do [Heartopia](https://heartopia.xd.com). Cole o link de uma música e a app busca, transpõe pro
 alcance do piano do jogo e mostra as teclas — com um teclado que destaca a próxima tecla, letra
-sincronizada e prévia com som.
+sincronizada, prévia com som e metrônomo pra acompanhar o tempo.
 
 Interface com a cara do jogo: paleta rosa pastel, teclado no estilo das teclas creme sobre a bandeja
 rosewood, música em polaroid e a sequência numa página de caderno.
