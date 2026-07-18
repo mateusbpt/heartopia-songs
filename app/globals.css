@@ -75,3 +75,29 @@ input[type="range"],
 input[type="checkbox"] {
   accent-color: var(--rose);
 }
+
+/* Themed scrollbars so they don't clash with the pink — Firefox. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--rose) transparent;
+}
+
+/* WebKit / Chromium: slim rose pill thumb with breathing room. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--rose);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rose-deep);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
