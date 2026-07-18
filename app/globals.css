@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* Heartopia cozy theme — pastel pink desk, rosewood piano, coral-rose accent.
+   Deliberately single-theme: the game lives in bright daylight. */
+:root {
+  --desk-1: #fde3ee;
+  --desk-2: #f5bdd6;
+  --paper: #fff7fb;
+  --paper-2: #fce9f2;
+  --line: #f1d3e1;
+  --ink: #6b3d52;
+  --ink-soft: #b0879b;
+  --rose: #f178a6;
+  --rose-deep: #db5289;
+  --rose-soft: #fcdcea;
+  --lav: #cbb6ec;
+  --lav-deep: #8d6bc4;
+  --lav-soft: #efe6fb;
+  --mint: #a6dcc3;
+  --mint-deep: #4fae86;
+  --mint-soft: #dff3ea;
+  --sun-1: #ffd571;
+  --sun-2: #fba948;
+  --sun-ink: #7a4a10;
+  /* rosewood piano tray */
+  --wood-1: #86566a;
+  --wood-2: #5c3946;
+  /* pink-cream keycaps */
+  --keycap: #fdf1f6;
+  --keycap-edge: #eccadb;
+  --keycap-ink: #6b3d52;
+  --keytab: #7c5c6a;
+  --keytab-ink: #fdeef4;
+}
+
+@theme inline {
+  --color-desk-1: var(--desk-1);
+  --color-desk-2: var(--desk-2);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-rose: var(--rose);
+  --color-rose-deep: var(--rose-deep);
+  --color-rose-soft: var(--rose-soft);
+  --color-lav: var(--lav);
+  --color-lav-deep: var(--lav-deep);
+  --color-lav-soft: var(--lav-soft);
+  --color-mint: var(--mint);
+  --color-mint-deep: var(--mint-deep);
+  --color-mint-soft: var(--mint-soft);
+  --color-wood-1: var(--wood-1);
+  --color-wood-2: var(--wood-2);
+  --color-keycap: var(--keycap);
+  --color-keycap-edge: var(--keycap-edge);
+  --color-keycap-ink: var(--keycap-ink);
+  --color-keytab: var(--keytab);
+  --color-keytab-ink: var(--keytab-ink);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+body {
+  background:
+    radial-gradient(120% 80% at 50% -20%, #fff2f8 0%, transparent 55%),
+    linear-gradient(165deg, var(--desk-1), var(--desk-2));
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Rose accents on native controls. */
+input[type="range"],
+input[type="checkbox"] {
+  accent-color: var(--rose);
+}
