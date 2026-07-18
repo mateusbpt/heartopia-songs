@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Keyboard from "@/components/Keyboard";
 import { arrange, bestShift, toKeyString } from "@/lib/arrange";
 import { parseSong } from "@/lib/notation";
-import { playNotes } from "@/lib/synth";
+import { playClicks, playNotes } from "@/lib/synth";
 import { inferredSourceKey } from "@/lib/theory";
 
 type Step = { keys: string[]; midis: number[]; beats: number; line: number };
@@ -40,6 +40,7 @@ export default function Home() {
   const [cursor, setCursor] = useState(0);
   const [copied, setCopied] = useState(false);
   const [sound, setSound] = useState(true);
+  const [metronome, setMetronome] = useState(false);
 
   const sections = useMemo(() => (song ? parseSong(song.notation) : []), [song]);
   const parsed = useMemo(() => sections.map((s) => s.events), [sections]);
@@ -59,6 +60,10 @@ export default function Home() {
   useEffect(() => {
     soundRef.current = sound;
   }, [sound]);
+  const metronomeRef = useRef(metronome);
+  useEffect(() => {
+    metronomeRef.current = metronome;
+  }, [metronome]);
 
   const finished = cursor >= timeline.length;
 
@@ -67,8 +72,10 @@ export default function Home() {
     // button can offer a replay without the effect writing state back.
     if (!playing || finished) return;
     const step = timeline[cursor];
-    const seconds = (60 / bpm) * step.beats;
+    const secondsPerBeat = 60 / bpm;
+    const seconds = secondsPerBeat * step.beats;
     if (soundRef.current) playNotes(step.midis, seconds);
+    if (metronomeRef.current) playClicks(step.beats, secondsPerBeat);
     timerRef.current = setTimeout(() => setCursor((c) => c + 1), seconds * 1000);
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
@@ -264,6 +271,15 @@ export default function Home() {
             <label className="flex items-center gap-1.5 text-sm font-bold text-ink">
               <input type="checkbox" checked={sound} onChange={(e) => setSound(e.target.checked)} />
               Som
+            </label>
+
+            <label className="flex items-center gap-1.5 text-sm font-bold text-ink">
+              <input
+                type="checkbox"
+                checked={metronome}
+                onChange={(e) => setMetronome(e.target.checked)}
+              />
+              Metrônomo
             </label>
 
             <div className="ml-auto flex gap-2.5">
